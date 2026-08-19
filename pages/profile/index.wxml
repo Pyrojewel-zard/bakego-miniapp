@@ -1,0 +1,41 @@
+<view class="container profile">
+  <view class="nav">个人中心</view>
+  <view class="dark">
+    <view class="facet f1"></view><view class="facet f2"></view><view class="facet f3"></view>
+    <view class="user">
+      <image class="avatar" src="{{user.avatar || '/assets/avatar.png'}}"></image>
+      <view class="uinfo">
+        <view class="uname">{{user.username || '用户_9051341'}}</view>
+        <view>{{loggedIn ? '欢迎回来，今天也要吃点甜的' : '为给您提供更好的服务请授权登录'}}</view>
+      </view>
+      <button wx:if="{{!loggedIn && apiMode === 'mock'}}" class="login" bindtap="mockLogin">登录/注册</button>
+      <button wx:elif="{{!loggedIn}}" class="login" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">登录/注册</button>
+      <view wx:else class="login done">已登录</view>
+    </view>
+  </view>
+
+  <view class="assets card">
+    <view class="section-title">我的资产</view>
+    <view class="asset-row">
+      <view class="asset-cell"><view class="a-main">▣ <text>积分</text></view><view class="sub"><text>{{user.score || 0}}</text> 个可用</view></view>
+      <view class="asset-cell"><view class="a-main">🎟 <text>优惠券</text></view><view class="sub"><text>{{user.coupons || 0}}</text> 张可用</view></view>
+      <view class="asset-cell"><view class="a-main">♙ <text>余额</text></view><view class="sub"><text>{{user.balance || 0}}</text> 元可用</view></view>
+    </view>
+  </view>
+
+  <view class="orders card" bindtap="orders">
+    <view class="section-title">我的订单</view>
+    <view class="order-entry"><view class="entry-icon">▤</view><view>我的订单</view></view>
+  </view>
+
+  <view class="tools">
+    <view class="tool" bindtap="address"><view class="ti">⌖</view><view>我的地址</view></view>
+    <view class="tool" bindtap="support"><view class="ti">☏</view><view>联系客服</view></view>
+    <view class="tool" bindtap="about"><view class="ti">ⓘ</view><view>联系我们</view></view>
+    <view class="tool" bindtap="policy"><view class="ti">⬡</view><view>协议政策</view></view>
+    <view class="tool" bindtap="member"><view class="ti">▥</view><view>会员码</view></view>
+  </view>
+
+  <view class="promo"><view class="promo-icon">🍋</view><view>积分大派兑<text>各种好礼兑不停</text></view></view>
+  <view class="dev-badge">当前数据模式：{{apiMode}}</view>
+</view>

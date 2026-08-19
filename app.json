@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/menu/index",
+    "pages/orders/index",
+    "pages/profile/index",
+    "pages/member/index",
+    "pages/checkout/index",
+    "pages/order-detail/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "卜卜屋烘焙",
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#f7f7f7"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#b8b8b8",
+    "selectedColor": "#111111",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/menu/index",
+        "text": "点单"
+      },
+      {
+        "pagePath": "pages/orders/index",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "requiredPrivateInfos": [
+    "getLocation"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于在真实后端模式下选择离您最近的门店"
+    }
+  }
+}

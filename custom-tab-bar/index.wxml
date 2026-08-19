@@ -1,0 +1,13 @@
+<view class="tabbar">
+  <view wx:for="{{items}}" wx:key="pagePath"
+        class="tab-item {{item.center ? 'center-wrap' : ''}}"
+        data-index="{{index}}" bindtap="onTap">
+    <view wx:if="{{item.center}}" class="center-button">
+      <view class="center-icon">{{item.icon}}</view>
+    </view>
+    <view wx:else class="normal-item {{selected === (index > 2 ? index - 1 : index) ? 'selected' : ''}}">
+      <view class="icon">{{item.icon}}</view>
+      <view class="label">{{item.text}}</view>
+    </view>
+  </view>
+</view>

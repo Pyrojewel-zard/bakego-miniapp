@@ -1,0 +1,24 @@
+<view wx:if="{{order}}" class="detail">
+  <view class="status-card card">
+    <view class="status">{{order.status}}</view>
+    <view class="muted">订单已提交，门店正在处理</view>
+  </view>
+  <view class="card block">
+    <view class="store">{{order.store.name}}</view>
+    <view wx:for="{{order.items}}" wx:key="key" class="line">
+      <image src="{{item.image}}" class="thumb"></image>
+      <view class="name">{{item.name}}<view class="muted">{{item.skuName}}</view></view>
+      <view>×{{item.qty}}</view>
+      <view class="p">￥{{item.price * item.qty}}</view>
+    </view>
+  </view>
+  <view class="card block meta">
+    <view><text>订单号</text><text>{{order.no}}</text></view>
+    <view><text>下单时间</text><text>{{order.createdAt}}</text></view>
+    <view><text>取餐方式</text><text>{{order.mode==='pickup'?'到店自提':'外卖配送'}}</text></view>
+    <view><text>备注</text><text>{{order.note || '无'}}</text></view>
+  </view>
+  <view class="card total"><text>实付</text><text>￥{{order.total}}</text></view>
+  <button class="back" bindtap="goOrders">返回订单列表</button>
+</view>
+<view wx:else class="missing">订单不存在</view>

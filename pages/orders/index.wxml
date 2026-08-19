@@ -1,0 +1,23 @@
+<view class="container order-page">
+  <scroll-view scroll-x class="tabs">
+    <view class="tab-inner">
+      <view wx:for="{{tabs}}" wx:key="*this" class="tab {{active===index?'active':''}}" data-index="{{index}}" bindtap="switchTab">{{item}}</view>
+    </view>
+  </scroll-view>
+
+  <view wx:if="{{active===0 && orders.length}}" class="list">
+    <view wx:for="{{orders}}" wx:key="id" class="order-card card" data-id="{{item.id}}" bindtap="detail">
+      <view class="ohead"><text>{{item.store.name}}</text><text class="status">{{item.status}}</text></view>
+      <view class="obody">
+        <image wx:for="{{item.items}}" wx:for-item="p" wx:key="key" wx:if="{{index<3}}" src="{{p.image}}" class="othumb"></image>
+        <view class="summary"><view>共 {{item.items.length}} 种商品</view><view>实付 ￥{{item.total}}</view></view>
+      </view>
+      <view class="otime">{{item.createdAt}}</view>
+    </view>
+  </view>
+
+  <view wx:else class="empty">
+    <view class="empty-icon">▤</view>
+    <view>您暂时还没有订单哦~</view>
+  </view>
+</view>

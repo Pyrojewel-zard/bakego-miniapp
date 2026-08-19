@@ -1,0 +1,59 @@
+<view class="container menu-page">
+  <view class="top">
+    <view class="search">⌕</view>
+    <view class="store-line">
+      <view class="store-name">☆ {{store.name}} ›</view>
+      <view class="switch">
+        <view class="{{mode==='delivery'?'active':''}}" data-mode="delivery" bindtap="changeMode">外卖</view>
+        <view class="{{mode==='pickup'?'active':''}}" data-mode="pickup" bindtap="changeMode">自取</view>
+      </view>
+    </view>
+    <view class="distance">⌖ 距离您 {{store.distance}}</view>
+    <view class="notice">♧ {{store.notice}} <text>更多 ›</text></view>
+  </view>
+
+  <view wx:if="{{loading}}" class="menu-loading">正在读取商品...</view>
+  <view wx:else class="content">
+    <scroll-view class="categories" scroll-y>
+      <view wx:for="{{categories}}" wx:key="id"
+            class="cat {{activeCategory===item.id?'active':''}}"
+            data-id="{{item.id}}" bindtap="selectCategory">
+        {{item.name}}
+      </view>
+    </scroll-view>
+
+    <scroll-view class="products" scroll-y>
+      <view wx:for="{{shownProducts}}" wx:key="id" class="product">
+        <image src="{{item.image}}" class="pimg" mode="aspectFill"></image>
+        <view class="pinfo">
+          <view class="pname">{{item.name}}</view>
+          <view class="pdesc">{{item.desc}}</view>
+          <view class="pfoot">
+            <view><text class="yuan">￥</text><text class="price">{{item.price}}</text><text wx:if="{{item.hasSku}}" class="from"> 起</text></view>
+            <view class="add {{item.hasSku?'sku':''}} {{item.stock<=0?'soldout':''}}" data-id="{{item.id}}" bindtap="addProduct">
+              {{item.stock<=0?'售罄':(item.hasSku?'选规格':'+')}}
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="bottom-space"></view>
+    </scroll-view>
+  </view>
+
+  <view wx:if="{{cartCount>0}}" class="cartbar" bindtap="checkout">
+    <view class="bag">🛍<view class="badge">{{cartCount}}</view></view>
+    <view class="cart-total">￥{{cartTotal}}</view>
+    <view class="go">去结算</view>
+  </view>
+
+  <view wx:if="{{showSku}}" class="mask" bindtap="closeSku">
+    <view class="sku-panel" catchtap="noop">
+      <view class="sku-title">{{skuProduct.name}}</view>
+      <view wx:for="{{skuProduct.skus}}" wx:key="id"
+            class="sku-row" data-sku="{{item.id}}" bindtap="chooseSku">
+        <text>{{item.name}}</text><text>￥{{item.price}}</text>
+      </view>
+      <view class="close" bindtap="closeSku">关闭</view>
+    </view>
+  </view>
+</view>

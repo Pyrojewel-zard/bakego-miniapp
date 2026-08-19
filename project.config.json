@@ -1,0 +1,18 @@
+{
+  "description": "Bread UI + yshop-drink API merged adaptation v1",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true
+  },
+  "compileType": "miniprogram",
+  "appid": "touristappid",
+  "projectname": "bread-yshop-merged-v1",
+  "condition": {}
+}

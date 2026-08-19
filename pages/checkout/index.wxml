@@ -1,0 +1,30 @@
+<view class="checkout">
+  <view class="mode card">
+    <view class="title">{{mode==='delivery'?'外卖配送':'到店自提'}}</view>
+    <view class="muted">{{store.name}}</view>
+  </view>
+
+  <view class="card block">
+    <view wx:for="{{cart}}" wx:key="key" class="item">
+      <image src="{{item.image}}" class="thumb"></image>
+      <view class="iname"><view>{{item.name}}</view><view class="muted sku">{{item.skuName}}</view></view>
+      <view class="qty">×{{item.qty}}</view>
+      <view class="iprice">￥{{item.price * item.qty}}</view>
+    </view>
+  </view>
+
+  <view class="card block row" bindtap="chooseTime">
+    <text>{{mode==='pickup'?'自提时间':'预计送达'}}</text><text>{{pickupTime}} ›</text>
+  </view>
+
+  <view class="card block">
+    <textarea class="note" placeholder="订单备注：口味、包装等" value="{{note}}" bindinput="onNote" maxlength="80"></textarea>
+  </view>
+
+  <view class="total card"><text>商品合计</text><text class="sum">￥{{total}}</text></view>
+
+  <view class="submitbar">
+    <view class="money">合计：<text>￥{{total}}</text></view>
+    <button class="submit" bindtap="submit">提交订单</button>
+  </view>
+</view>

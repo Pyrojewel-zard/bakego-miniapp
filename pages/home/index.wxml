@@ -1,0 +1,46 @@
+<view class="container home">
+  <view class="hero">
+    <view class="hero-deco left">🥐</view>
+    <view class="hero-deco right">🥖</view>
+    <view class="mascot">
+      <view class="ear e1"></view><view class="ear e2"></view>
+      <view class="face">
+        <view class="eye l"></view><view class="eye r"></view>
+        <view class="nose"></view>
+        <view class="cheek c1"></view><view class="cheek c2"></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="cream">
+    <view class="actions">
+      <view class="action" bindtap="goMenu" data-mode="delivery">
+        <view class="round">🛵</view><view class="action-title">外卖配送</view>
+      </view>
+      <view class="action" bindtap="goMenu" data-mode="pickup">
+        <view class="round">🏪</view><view class="action-title">到店自提</view>
+      </view>
+      <view class="action" bindtap="goOrders">
+        <view class="round">📋</view><view class="action-title">我的订单</view>
+      </view>
+    </view>
+
+    <image class="banner" src="{{banner}}" mode="aspectFill"></image>
+
+    <view class="vip-row">
+      <view class="vip-card" bindtap="goMember">
+        <view class="vip-icon">♛</view>
+        <view><view class="big">会员中心</view><view class="small">VIP CENTRE</view></view>
+      </view>
+      <view class="vip-card" bindtap="recharge">
+        <view class="vip-icon">▣</view>
+        <view><view class="big">充值有礼</view><view class="small">RECHARGE</view></view>
+      </view>
+    </view>
+
+    <view class="store-tip card">
+      <view class="store-name">{{store.name}}</view>
+      <view class="muted">{{store.notice}}</view>
+    </view>
+  </view>
+</view>

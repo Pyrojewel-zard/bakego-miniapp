@@ -1,0 +1,24 @@
+<view class="member">
+  <view class="member-topbar"><text bindtap="back">‹</text><text class="title">会员码</text><text>•••</text></view>
+  <view class="member-card">
+    <image class="mavatar" src="{{user.avatar || '/assets/avatar.png'}}"></image>
+    <view class="username">{{user.username || '用户_9051341'}}</view>
+
+    <view class="barcode">
+      <view wx:for="{{bars}}" wx:key="index" class="bar" style="width:{{item.w}}rpx;margin-right:{{item.g}}rpx"></view>
+    </view>
+
+    <view class="qr">
+      <view wx:for="{{cells}}" wx:key="index" class="qcell {{item?'dark':''}}"></view>
+    </view>
+
+    <view class="refresh">↻ 会员码 {{seconds}} 秒后自动更新，请在店内消费使用</view>
+    <view class="divider"></view>
+
+    <view class="stats">
+      <view><view class="num">{{user.coupons || 0}}</view><view>优惠券</view></view>
+      <view><view class="num">{{user.score || 0}}</view><view>积分</view></view>
+      <view><view class="num">{{user.balance || 0}}</view><view>余额</view></view>
+    </view>
+  </view>
+</view>
